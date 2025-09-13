@@ -14,6 +14,95 @@ export type Database = {
   }
   public: {
     Tables: {
+      achievements: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          file_url: string | null
+          id: string
+          status: Database["public"]["Enums"]["achievement_status"]
+          student_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          file_url?: string | null
+          id?: string
+          status?: Database["public"]["Enums"]["achievement_status"]
+          student_id: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          file_url?: string | null
+          id?: string
+          status?: Database["public"]["Enums"]["achievement_status"]
+          student_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "achievements_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      faculty_reviews: {
+        Row: {
+          achievement_id: string
+          created_at: string
+          decision: Database["public"]["Enums"]["review_decision"]
+          faculty_id: string
+          feedback: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          achievement_id: string
+          created_at?: string
+          decision: Database["public"]["Enums"]["review_decision"]
+          faculty_id: string
+          feedback: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          achievement_id?: string
+          created_at?: string
+          decision?: Database["public"]["Enums"]["review_decision"]
+          faculty_id?: string
+          feedback?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "faculty_reviews_achievement_id_fkey"
+            columns: ["achievement_id"]
+            isOneToOne: false
+            referencedRelation: "achievements"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "faculty_reviews_faculty_id_fkey"
+            columns: ["faculty_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -55,7 +144,9 @@ export type Database = {
       }
     }
     Enums: {
+      achievement_status: "pending" | "approved" | "rejected"
       app_role: "student" | "faculty" | "admin"
+      review_decision: "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -183,7 +274,9 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      achievement_status: ["pending", "approved", "rejected"],
       app_role: ["student", "faculty", "admin"],
+      review_decision: ["approved", "rejected"],
     },
   },
 } as const
