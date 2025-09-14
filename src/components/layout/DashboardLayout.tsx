@@ -1,29 +1,27 @@
-import { useEffect } from "react";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import { User, LogOut, Bell } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/hooks/useAuth";
+import type { User as UserType } from "@/pages/Login";
 
 interface DashboardLayoutProps {
   requiredRole?: 'student' | 'faculty' | 'admin';
 }
 
 const DashboardLayout = ({ requiredRole }: DashboardLayoutProps) => {
+  const [user, setUser] = useState<UserType | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
-  const { user, profile, loading, signOut } = useAuth();
 
   useEffect(() => {
-    if (!loading) {
-      if (!user || !profile) {
-        navigate('/login');
-        return;
-      }
-
-      if (requiredRole && profile.role !== requiredRole) {
+    const userData = localStorage.getItem('student360_user');
+    if (userData) {
+      const parsedUser = JSON.parse(userData);
+      if (requiredRole && parsedUser.role !== requiredRole) {
         toast({
           title: "Access Denied",
           description: "You don't have permission to access this page",
@@ -32,32 +30,27 @@ const DashboardLayout = ({ requiredRole }: DashboardLayoutProps) => {
         navigate('/login');
         return;
       }
-    }
-  }, [user, profile, loading, requiredRole, navigate, toast]);
-
-  const handleLogout = async () => {
-    try {
-      await signOut();
-      toast({
-        title: "Logged out",
-        description: "You have been successfully logged out"
-      });
+      setUser(parsedUser);
+    } else {
       navigate('/login');
-    } catch (error: any) {
-      toast({
-        title: "Logout failed",
-        description: error.message,
-        variant: "destructive"
-      });
     }
+  }, [requiredRole, navigate, toast]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('student360_user');
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out"
+    });
+    navigate('/login');
   };
 
-  if (loading || !user || !profile) return null;
+  if (!user) return null;
 
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
-        <AppSidebar userRole={profile.role} />
+        <AppSidebar userRole={user.role} />
         
         <div className="flex-1 flex flex-col">
           {/* Header */}
@@ -67,7 +60,7 @@ const DashboardLayout = ({ requiredRole }: DashboardLayoutProps) => {
               <div>
                 <h1 className="text-lg font-semibold">Student360</h1>
                 <p className="text-sm text-muted-foreground capitalize">
-                  {profile.role} Dashboard
+                  {user.role} Dashboard
                 </p>
               </div>
             </div>
@@ -83,8 +76,8 @@ const DashboardLayout = ({ requiredRole }: DashboardLayoutProps) => {
                   <User className="h-4 w-4 text-primary" />
                 </div>
                 <div className="hidden md:block">
-                  <p className="font-medium">{profile.name}</p>
-                  <p className="text-xs text-muted-foreground">{profile.email}</p>
+                  <p className="font-medium">{user.name}</p>
+                  <p className="text-xs text-muted-foreground">{user.email}</p>
                 </div>
               </div>
 
