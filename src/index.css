@@ -19,14 +19,14 @@
     --popover-foreground: 222 18% 11%;
     
     /* Primary - Professional education blue */
-    --primary: 220 91% 50%;
+    --primary: 244 100% 18%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 220 91% 60%;
-    --primary-dark: 220 91% 40%;
+    --primary-light: 244 100% 28%;
+    --primary-dark: 244 100% 8%;
     
     /* Secondary - Soft accent for supporting elements */
-    --secondary: 220 15% 95%;
-    --secondary-foreground: 220 25% 25%;
+    --secondary: 43 100% 47%;
+    --secondary-foreground: 222 18% 11%;
     
     /* Muted tones for subtle elements */
     --muted: 220 10% 96%;
@@ -37,7 +37,7 @@
     --accent-foreground: 0 0% 100%;
     
     /* Achievement category colors */
-    --academic: 220 91% 50%;
+    --academic: 244 100% 18%;
     --cocurricular: 267 84% 58%;
     --extracurricular: 25 95% 53%;
     --certification: 142 76% 36%;
@@ -54,12 +54,12 @@
     /* Borders and inputs */
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 220 91% 50%;
+    --ring: 244 100% 18%;
     
     /* Gradients for hero sections */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
     --gradient-achievement: linear-gradient(135deg, hsl(var(--accent)), hsl(142 76% 46%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 91% 50%), hsl(267 84% 58%));
+    --gradient-hero: linear-gradient(135deg, hsl(244 100% 18%), hsl(267 84% 58%));
     
     /* Shadows */
     --shadow-card: 0 2px 8px hsl(220 25% 25% / 0.08);
@@ -72,7 +72,7 @@
 
     --sidebar-foreground: 240 5.3% 26.1%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary: 244 100% 18%;
 
     --sidebar-primary-foreground: 0 0% 98%;
 
@@ -82,7 +82,7 @@
 
     --sidebar-border: 220 13% 91%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 244 100% 18%;
   }
 
   .dark {
@@ -96,13 +96,13 @@
     --popover: 222 25% 10%;
     --popover-foreground: 220 15% 95%;
     
-    --primary: 220 91% 60%;
+    --primary: 244 100% 28%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 220 91% 70%;
-    --primary-dark: 220 91% 50%;
+    --primary-light: 244 100% 38%;
+    --primary-dark: 244 100% 18%;
     
-    --secondary: 222 15% 15%;
-    --secondary-foreground: 220 15% 85%;
+    --secondary: 43 100% 37%;
+    --secondary-foreground: 222 18% 11%;
     
     --muted: 222 10% 12%;
     --muted-foreground: 220 8% 60%;
@@ -110,7 +110,7 @@
     --accent: 142 76% 45%;
     --accent-foreground: 0 0% 100%;
     
-    --academic: 220 91% 60%;
+    --academic: 244 100% 28%;
     --cocurricular: 267 84% 68%;
     --extracurricular: 25 95% 63%;
     --certification: 142 76% 45%;
@@ -125,21 +125,21 @@
     
     --border: 222 15% 20%;
     --input: 222 15% 20%;
-    --ring: 220 91% 60%;
+    --ring: 244 100% 28%;
     
     --sidebar-background: 222 25% 8%;
     --sidebar-foreground: 220 15% 95%;
-    --sidebar-primary: 220 91% 60%;
+    --sidebar-primary: 244 100% 28%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 222 15% 15%;
     --sidebar-accent-foreground: 220 15% 85%;
     --sidebar-border: 222 15% 20%;
-    --sidebar-ring: 220 91% 60%;
+    --sidebar-ring: 244 100% 28%;
     
     /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 91% 60%), hsl(220 91% 70%));
+    --gradient-primary: linear-gradient(135deg, hsl(244 100% 28%), hsl(244 100% 38%));
     --gradient-achievement: linear-gradient(135deg, hsl(142 76% 45%), hsl(142 76% 55%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 91% 60%), hsl(267 84% 68%));
+    --gradient-hero: linear-gradient(135deg, hsl(244 100% 28%), hsl(267 84% 68%));
   }
 }
 

@@ -105,7 +105,7 @@ const StudentDashboard = () => {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="shadow-card hover:shadow-hover transition-shadow">
+        <Card className="shadow-card transition-shadow">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -117,7 +117,7 @@ const StudentDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-card hover:shadow-hover transition-shadow">
+        <Card className="shadow-card transition-shadow">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -129,7 +129,7 @@ const StudentDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-card hover:shadow-hover transition-shadow">
+        <Card className="shadow-card transition-shadow">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -141,7 +141,7 @@ const StudentDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-card hover:shadow-hover transition-shadow">
+        <Card className="shadow-card transition-shadow">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -212,7 +212,7 @@ const StudentDashboard = () => {
               </div>
             ) : (
               recentAchievements.map((achievement) => (
-                <div key={achievement.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-muted/30 transition-colors">
+                <div key={achievement.id} className="flex items-start gap-3 p-3 border rounded-lg transition-colors">
                   <div className={`w-3 h-3 rounded-full mt-2 ${getCategoryColor(achievement.category)}`} />
                   <div className="flex-1">
                     <div className="flex items-start justify-between">
