@@ -11,7 +11,8 @@ import {
   BarChart3,
   FileText,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Lightbulb
 } from "lucide-react";
 
 const Index = () => {
@@ -35,6 +36,11 @@ const Index = () => {
       icon: FileText,
       title: "Portfolio Generation",
       description: "Automated creation of professional student portfolios and transcripts"
+    },
+    {
+      icon: Lightbulb,
+      title: "AI-Powered Analytics",
+      description: "Skill gap analysis and career recommendations"
     }
   ];
 
@@ -119,7 +125,7 @@ const Index = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-            ))}
+            )) realistically}
           </div>
         </div>
       </section>
