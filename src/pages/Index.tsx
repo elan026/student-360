@@ -125,7 +125,7 @@ const Index = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
-            )) realistically}
+            ))}
           </div>
         </div>
       </section>
