@@ -1,3 +1,4 @@
+
 export type Json =
   | string
   | number
@@ -58,49 +59,81 @@ export type Database = {
           },
         ]
       }
-      faculty_reviews: {
+      verification_history: {
         Row: {
-          achievement_id: string
-          created_at: string
-          decision: Database["public"]["Enums"]["review_decision"]
-          faculty_id: string
-          feedback: string
           id: string
-          updated_at: string
+          achievement_id: string
+          actor_id: string
+          from_status: Database["public"]["Enums"]["achievement_status"]
+          to_status: Database["public"]["Enums"]["achievement_status"]
+          comment: string | null
+          created_at: string
         }
         Insert: {
-          achievement_id: string
-          created_at?: string
-          decision: Database["public"]["Enums"]["review_decision"]
-          faculty_id: string
-          feedback: string
           id?: string
-          updated_at?: string
+          achievement_id: string
+          actor_id: string
+          from_status: Database["public"]["Enums"]["achievement_status"]
+          to_status: Database["public"]["Enums"]["achievement_status"]
+          comment?: string | null
+          created_at?: string
         }
         Update: {
-          achievement_id?: string
-          created_at?: string
-          decision?: Database["public"]["Enums"]["review_decision"]
-          faculty_id?: string
-          feedback?: string
           id?: string
-          updated_at?: string
+          achievement_id?: string
+          actor_id?: string
+          from_status?: Database["public"]["Enums"]["achievement_status"]
+          to_status?: Database["public"]["Enums"]["achievement_status"]
+          comment?: string | null
+          created_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "faculty_reviews_achievement_id_fkey"
+            foreignKeyName: "verification_history_achievement_id_fkey"
             columns: ["achievement_id"]
             isOneToOne: false
             referencedRelation: "achievements"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "faculty_reviews_faculty_id_fkey"
-            columns: ["faculty_id"]
+            foreignKeyName: "verification_history_actor_id_fkey"
+            columns: ["actor_id"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
-          },
+          }
+        ]
+      }
+      notifications: {
+        Row: {
+          id: string
+          user_id: string
+          message: string
+          is_read: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          message: string
+          is_read?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          message?: string
+          is_read?: boolean
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
         ]
       }
       profiles: {
@@ -144,9 +177,8 @@ export type Database = {
       }
     }
     Enums: {
-      achievement_status: "pending" | "approved" | "rejected"
+      achievement_status: "pending" | "under_review" | "verified" | "rejected"
       app_role: "student" | "faculty" | "admin"
-      review_decision: "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -274,9 +306,8 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      achievement_status: ["pending", "approved", "rejected"],
+      achievement_status: ["pending", "under_review", "verified", "rejected"],
       app_role: ["student", "faculty", "admin"],
-      review_decision: ["approved", "rejected"],
     },
   },
 } as const

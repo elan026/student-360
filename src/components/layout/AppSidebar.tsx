@@ -1,3 +1,4 @@
+
 import { useLocation, NavLink } from "react-router-dom";
 import {
   Sidebar,
@@ -22,7 +23,9 @@ import {
   UserCheck,
   GraduationCap,
   Award,
-  PlusCircle
+  PlusCircle,
+  ClipboardList,
+  AreaChart // For analytics
 } from "lucide-react";
 
 interface AppSidebarProps {
@@ -51,6 +54,8 @@ export function AppSidebar({ userRole }: AppSidebarProps) {
 
   const facultyItems = [
     { title: "Dashboard", url: "/faculty", icon: BarChart3 },
+    { title: "Analytics", url: "/faculty/analytics", icon: AreaChart },
+    { title: "Verification Queue", url: "/faculty/queue", icon: ClipboardList },
     { title: "Review Submissions", url: "/faculty/reviews", icon: CheckCircle },
     { title: "Students", url: "/faculty/students", icon: Users },
     { title: "Reports", url: "/faculty/reports", icon: FileText },
@@ -59,7 +64,7 @@ export function AppSidebar({ userRole }: AppSidebarProps) {
 
   const adminItems = [
     { title: "Dashboard", url: "/admin", icon: BarChart3 },
-    { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
+    { title: "Analytics", url: "/admin/analytics", icon: AreaChart },
     { title: "Users Management", url: "/admin/users", icon: Users },
     { title: "Reports", url: "/admin/reports", icon: FileText },
     { title: "Settings", url: "/admin/settings", icon: Settings },
