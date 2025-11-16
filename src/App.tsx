@@ -49,6 +49,7 @@ const App = () => (
             <Route path="add" element={<AddAchievement />} />
             <Route path="edit/:id" element={<EditAchievement />} />
             <Route path="portfolio" element={<Portfolio />} />
+            <Route path="profile" element={<StudentProfile />} />
           </Route>
           
           {/* Faculty Routes */}
