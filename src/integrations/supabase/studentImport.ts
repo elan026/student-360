@@ -61,8 +61,6 @@ export const convertToStudentProfile = (csvRow: StudentCSVRow): StudentProfile =
 
 /**
  * Bulk insert students into the database
- * Note: The profiles table needs to be updated to include phone, register_no, department, year, section fields
- * Or we can use JSON storage for additional fields
  */
 export const importStudents = async (csvText: string): Promise<{ success: number; failed: number; errors: string[] }> => {
   try {
@@ -78,20 +76,19 @@ export const importStudents = async (csvText: string): Promise<{ success: number
     for (let i = 0; i < profiles.length; i += batchSize) {
       const batch = profiles.slice(i, i + batchSize);
 
-      const { error } = await supabase.from("profiles").upsert(
+      const { error } = await supabase.from("profiles").insert(
         batch.map((profile) => ({
           id: profile.id,
           name: profile.name,
           email: profile.email,
           role: profile.role,
-          avatar_url: null,
-        })),
-        { onConflict: "id" }
+          avatar_url: profile.avatar_url,
+        }))
       );
 
       if (error) {
         failedCount += batch.length;
-        errors.push(`Batch ${i / batchSize + 1}: ${error.message}`);
+        errors.push(`Batch ${Math.floor(i / batchSize) + 1}: ${error.message}`);
       } else {
         successCount += batch.length;
       }
