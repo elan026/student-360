@@ -52,14 +52,14 @@ const ImportStudents = () => {
         <CardHeader>
           <CardTitle>Import Students</CardTitle>
           <CardDescription>
-            Upload a CSV file with student data to import into the system
+            Upload a CSV file or paste CSV data to import students into the system
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
             <h3 className="font-medium mb-2">CSV Format</h3>
             <p className="text-sm text-muted-foreground mb-3">
-              Your CSV file should have the following columns (in order):
+              Your CSV data should have the following columns (in order):
             </p>
             <code className="block bg-muted p-3 rounded-md text-xs overflow-x-auto mb-4">
               student_id,name,register_no,department,year,section,email,phone
@@ -72,47 +72,82 @@ const ImportStudents = () => {
             </p>
           </div>
 
-          <div className="border-2 border-dashed border-border rounded-lg p-6">
-            <div className="flex flex-col items-center justify-center">
-              <Upload className="h-8 w-8 text-muted-foreground mb-2" />
-              <label className="cursor-pointer">
-                <span className="font-medium text-primary hover:underline">
-                  Click to upload
-                </span>
-                <input
-                  type="file"
-                  accept=".csv"
-                  onChange={handleFileChange}
-                  className="hidden"
-                  disabled={loading}
-                />
-              </label>
-              <p className="text-sm text-muted-foreground mt-1">
-                or drag and drop your CSV file
-              </p>
-              {file && (
-                <p className="text-sm text-green-600 mt-2">
-                  ✓ {file.name} selected
-                </p>
-              )}
-            </div>
-          </div>
+          <Tabs defaultValue="file" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="file">Upload File</TabsTrigger>
+              <TabsTrigger value="paste">Paste Data</TabsTrigger>
+            </TabsList>
 
-          <Button
-            onClick={handleImport}
-            disabled={!file || loading}
-            className="w-full"
-            size="lg"
-          >
-            {loading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Importing...
-              </>
-            ) : (
-              'Import Students'
-            )}
-          </Button>
+            <TabsContent value="file" className="space-y-4">
+              <div className="border-2 border-dashed border-border rounded-lg p-6">
+                <div className="flex flex-col items-center justify-center">
+                  <Upload className="h-8 w-8 text-muted-foreground mb-2" />
+                  <label className="cursor-pointer">
+                    <span className="font-medium text-primary hover:underline">
+                      Click to upload
+                    </span>
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={handleFileChange}
+                      className="hidden"
+                      disabled={loading}
+                    />
+                  </label>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    or drag and drop your CSV file
+                  </p>
+                  {file && (
+                    <p className="text-sm text-green-600 mt-2">
+                      ✓ {file.name} selected
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <Button
+                onClick={() => handleImport(csvContent)}
+                disabled={!file || loading}
+                className="w-full"
+                size="lg"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Importing...
+                  </>
+                ) : (
+                  'Import Students'
+                )}
+              </Button>
+            </TabsContent>
+
+            <TabsContent value="paste" className="space-y-4">
+              <Textarea
+                placeholder="Paste your CSV data here..."
+                value={pastedContent}
+                onChange={(e) => setPastedContent(e.target.value)}
+                className="min-h-64 font-mono text-sm"
+                disabled={loading}
+              />
+
+              <Button
+                onClick={() => handleImport(pastedContent)}
+                disabled={!pastedContent.trim() || loading}
+                className="w-full"
+                size="lg"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Importing...
+                  </>
+                ) : (
+                  'Import Students'
+                )}
+              </Button>
+            </TabsContent>
+          </Tabs>
         </CardContent>
       </Card>
 
