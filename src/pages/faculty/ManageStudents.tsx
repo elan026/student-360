@@ -1,9 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Search } from 'lucide-react';
+import { Search, Loader2 } from 'lucide-react';
+import { getAllStudents, searchStudents } from '@/integrations/supabase/studentImport';
 
 interface Student {
   id: string;
@@ -13,51 +13,55 @@ interface Student {
   verifiedAchievements: number;
 }
 
-// Mock data for student list
-const mockStudents: Student[] = [
-  {
-    id: 'ST001',
-    name: 'Viswanathan Anand',
-    email: 'viswanathan.anand@example.com',
-    totalAchievements: 40,
-    verifiedAchievements: 32,
-  },
-  {
-    id: 'ST002',
-    name: 'Sundar Pichai',
-    email: 'sundar.pichai@example.com',
-    totalAchievements: 35,
-    verifiedAchievements: 28,
-  },
-  {
-    id: 'ST003',
-    name: 'A. P. J. Abdul Kalam',
-    email: 'apj.abdul.kalam@example.com',
-    totalAchievements: 30,
-    verifiedAchievements: 25,
-  },
-  {
-    id: 'ST004',
-    name: 'Kamal Haasan',
-    email: 'kamal.haasan@example.com',
-    totalAchievements: 28,
-    verifiedAchievements: 21,
-  },
-  {
-    id: 'ST005',
-    name: 'Rajinikanth',
-    email: 'rajinikanth@example.com',
-    totalAchievements: 25,
-    verifiedAchievements: 18,
-  },
-];
-
 const ManageStudents = () => {
-  const [students, setStudents] = useState<Student[]>(mockStudents);
+  const [students, setStudents] = useState<Student[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadStudents = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getAllStudents();
+        setStudents(data);
+      } catch (err) {
+        console.error('Error loading students:', err);
+        setError('Failed to load students');
+        setStudents([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadStudents();
+  }, []);
+
+  const handleSearch = async (value: string) => {
+    setSearchTerm(value);
+    if (!value.trim()) {
+      try {
+        const data = await getAllStudents();
+        setStudents(data);
+      } catch (err) {
+        console.error('Error loading students:', err);
+        setError('Failed to load students');
+      }
+    } else {
+      try {
+        const results = await searchStudents(value);
+        setStudents(results);
+      } catch (err) {
+        console.error('Error searching students:', err);
+        setError('Search failed');
+      }
+    }
+  };
 
   const filteredStudents = students.filter(student =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    student.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
