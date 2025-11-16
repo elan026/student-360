@@ -24,15 +24,15 @@ const ImportStudents = () => {
     }
   };
 
-  const handleImport = async () => {
-    if (!csvContent) {
-      alert('Please select a CSV file');
+  const handleImport = async (content: string) => {
+    if (!content.trim()) {
+      alert('Please provide CSV data');
       return;
     }
 
     try {
       setLoading(true);
-      const importResult = await importStudents(csvContent);
+      const importResult = await importStudents(content);
       setResult(importResult);
     } catch (error) {
       console.error('Error importing students:', error);
