@@ -12,6 +12,7 @@ const ImportStudents = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{ success: number; failed: number; errors: string[] } | null>(null);
   const [csvContent, setCsvContent] = useState<string>('');
+  const [pastedContent, setPastedContent] = useState<string>('');
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
