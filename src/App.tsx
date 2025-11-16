@@ -23,6 +23,9 @@ import Messages from "./pages/faculty/Messages";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
 import ImportStudents from "./pages/admin/ImportStudents";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminReports from "./pages/admin/AdminReports";
+import AdminSettings from "./pages/admin/AdminSettings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
