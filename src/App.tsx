@@ -63,6 +63,7 @@ const App = () => (
           <Route path="/admin" element={<DashboardLayout requiredRole="admin" />}>
             <Route index element={<AdminDashboard />} />
             <Route path="analytics" element={<AnalyticsDashboard />} />
+            <Route path="import-students" element={<ImportStudents />} />
           </Route>
           
           {/* Catch-all route */}
