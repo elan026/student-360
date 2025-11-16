@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, XCircle, Clock } from "lucide-react";
 import { getStudentPortfolio } from '@/integrations/supabase/portfolio';
-import { getAuthenticatedUser } from '@/integrations/supabase/debug';
+
+// Assume we get the student ID from the user's session or props
+const MOCK_STUDENT_ID = 'S001';
 
 const getStatusIcon = (status: string) => {
   switch (status) {
@@ -28,11 +30,7 @@ export default function Portfolio() {
     const fetchPortfolio = async () => {
       try {
         setLoading(true);
-        const user = await getAuthenticatedUser();
-        if (!user) {
-          throw new Error("User not authenticated");
-        }
-        const portfolioData = await getStudentPortfolio(user.id);
+        const portfolioData = await getStudentPortfolio(MOCK_STUDENT_ID);
         setAchievements(portfolioData);
         setError(null);
       } catch (err) {
@@ -66,24 +64,20 @@ export default function Portfolio() {
           <CardTitle>My Achievements</CardTitle>
         </CardHeader>
         <CardContent>
-          {achievements.length > 0 ? (
-            <div className="space-y-4">
-              {achievements.map((achievement) => (
-                <div key={achievement.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                  <div>
-                    <p className="font-semibold">{achievement.title}</p>
-                    <p className="text-sm text-muted-foreground">{achievement.category} - {achievement.date}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {getStatusIcon(achievement.status)}
-                    <span className="capitalize">{achievement.status}</span>
-                  </div>
+          <div className="space-y-4">
+            {achievements.map((achievement) => (
+              <div key={achievement.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                <div>
+                  <p className="font-semibold">{achievement.title}</p>
+                  <p className="text-sm text-muted-foreground">{achievement.category} - {achievement.date}</p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <p>You haven't added any achievements yet. Start by adding a new achievement.</p>
-          )}
+                <div className="flex items-center gap-2">
+                  {getStatusIcon(achievement.status)}
+                  <span className="capitalize">{achievement.status}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
     </div>

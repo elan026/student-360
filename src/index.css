@@ -63,7 +63,7 @@
     
     /* Shadows for depth */
     --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-focus: 0 0 0 3px hsl(var(--primary) / 0.12);
 
     --radius: 0.75rem; /* Slightly larger radius for a modern look */
