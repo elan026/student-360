@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Textarea } from '@/components/ui/textarea';
 import { importStudents } from '@/integrations/supabase/studentImport';
 import { Upload, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const ImportStudents = () => {
   const [file, setFile] = useState<File | null>(null);
