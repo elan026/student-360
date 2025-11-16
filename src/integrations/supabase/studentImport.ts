@@ -23,11 +23,7 @@ export interface StudentProfile {
   name: string;
   email: string;
   role: "student";
-  phone?: string;
-  register_no?: string;
-  department?: string;
-  year?: string;
-  section?: string;
+  avatar_url?: string | null;
 }
 
 /**
@@ -51,18 +47,15 @@ export const parseStudentCSV = (csvText: string): StudentCSVRow[] => {
 
 /**
  * Convert CSV student data to profile format for database insertion
+ * Generates a new UUID for each student
  */
 export const convertToStudentProfile = (csvRow: StudentCSVRow): StudentProfile => {
   return {
-    id: csvRow.student_id,
+    id: generateUUID(),
     name: csvRow.name,
     email: csvRow.email,
     role: "student" as const,
-    phone: csvRow.phone,
-    register_no: csvRow.register_no,
-    department: csvRow.department,
-    year: csvRow.year,
-    section: csvRow.section,
+    avatar_url: null,
   };
 };
 
