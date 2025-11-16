@@ -67,6 +67,9 @@ const App = () => (
             <Route index element={<AdminDashboard />} />
             <Route path="analytics" element={<AnalyticsDashboard />} />
             <Route path="import-students" element={<ImportStudents />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="reports" element={<AdminReports />} />
+            <Route path="settings" element={<AdminSettings />} />
           </Route>
           
           {/* Catch-all route */}
