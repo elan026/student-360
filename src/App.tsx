@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,6 +22,7 @@ import GenerateReports from "./pages/faculty/GenerateReports";
 import Messages from "./pages/faculty/Messages";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
+import ImportStudents from "./pages/admin/ImportStudents";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
