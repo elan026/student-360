@@ -54,11 +54,22 @@ export default function Portfolio() {
   }, []);
 
   if (loading) {
-    return <div>Loading portfolio...</div>;
+    return (
+      <div className="flex items-center justify-center h-40">
+        <Loader2 className="h-6 w-6 animate-spin text-primary mr-2" />
+        <span>Loading portfolio...</span>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-red-500 p-4">{error}</div>;
+    return (
+      <Card className="border-destructive/50">
+        <CardContent className="pt-6">
+          <div className="text-destructive p-4">{error}</div>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
