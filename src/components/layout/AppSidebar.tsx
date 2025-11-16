@@ -1,4 +1,3 @@
-
 import { useLocation, NavLink } from "react-router-dom";
 import {
   Sidebar,
@@ -65,6 +64,7 @@ export function AppSidebar({ userRole }: AppSidebarProps) {
   const adminItems = [
     { title: "Dashboard", url: "/admin", icon: BarChart3 },
     { title: "Analytics", url: "/admin/analytics", icon: AreaChart },
+    { title: "Import Students", url: "/admin/import-students", icon: Users },
     { title: "Users Management", url: "/admin/users", icon: Users },
     { title: "Reports", url: "/admin/reports", icon: FileText },
     { title: "Settings", url: "/admin/settings", icon: Settings },
