@@ -1,5 +1,4 @@
 import { supabase } from "./client";
-import { v4 as uuidv4 } from 'uuid';
 
 export interface StudentCSVRow {
   student_id: string;
@@ -13,10 +12,10 @@ export interface StudentCSVRow {
 }
 
 /**
- * Generate a UUID v4 string
+ * Generate a UUID v4 string using crypto API
  */
 const generateUUID = (): string => {
-  return uuidv4();
+  return crypto.randomUUID();
 };
 
 export interface StudentProfile {
