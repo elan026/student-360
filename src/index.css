@@ -117,13 +117,13 @@
     --input: 222 15% 20%;
     --ring: 220 100% 35%;
 
-    --sidebar-background: 222 25% 8%;
+    --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 0%;
     --sidebar-primary: 220 100% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 15% 15%;
+    --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 222 15% 20%;
+    --sidebar-border: 220 13% 91%;
 
     --gradient-hero: linear-gradient(135deg, hsl(220 100% 35%), hsl(43 100% 55%));
   }
