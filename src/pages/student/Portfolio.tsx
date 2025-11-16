@@ -1,12 +1,9 @@
-
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, XCircle, Clock } from "lucide-react";
+import { CheckCircle, XCircle, Clock, Loader2 } from "lucide-react";
 import { getStudentPortfolio } from '@/integrations/supabase/portfolio';
-
-// Assume we get the student ID from the user's session or props
-const MOCK_STUDENT_ID = 'S001';
+import { supabase } from '@/integrations/supabase/client';
 
 const getStatusIcon = (status: string) => {
   switch (status) {
@@ -30,7 +27,19 @@ export default function Portfolio() {
     const fetchPortfolio = async () => {
       try {
         setLoading(true);
-        const portfolioData = await getStudentPortfolio(MOCK_STUDENT_ID);
+
+        // Get the current authenticated user
+        const { data: authData, error: authError } = await supabase.auth.getUser();
+
+        if (authError || !authData?.user?.id) {
+          setError('Please log in to view your portfolio.');
+          setAchievements([]);
+          return;
+        }
+
+        // Use the authenticated user's ID
+        const studentId = authData.user.id;
+        const portfolioData = await getStudentPortfolio(studentId);
         setAchievements(portfolioData);
         setError(null);
       } catch (err) {
@@ -45,11 +54,22 @@ export default function Portfolio() {
   }, []);
 
   if (loading) {
-    return <div>Loading portfolio...</div>;
+    return (
+      <div className="flex items-center justify-center h-40">
+        <Loader2 className="h-6 w-6 animate-spin text-primary mr-2" />
+        <span>Loading portfolio...</span>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-red-500 p-4">{error}</div>;
+    return (
+      <Card className="border-destructive/50">
+        <CardContent className="pt-6">
+          <div className="text-destructive p-4">{error}</div>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (

@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,7 @@ import AchievementsList from "./pages/student/AchievementsList";
 import AddAchievement from "./pages/student/AddAchievement";
 import EditAchievement from "./pages/student/EditAchievement";
 import Portfolio from "./pages/student/Portfolio";
+import StudentProfile from "./pages/student/StudentProfile";
 import FacultyDashboard from "./pages/faculty/FacultyDashboard";
 import FacultyAnalyticsDashboard from "./pages/faculty/AnalyticsDashboard";
 import { VerificationQueue } from "./pages/faculty/VerificationQueue";
@@ -23,6 +23,10 @@ import GenerateReports from "./pages/faculty/GenerateReports";
 import Messages from "./pages/faculty/Messages";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
+import ImportStudents from "./pages/admin/ImportStudents";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminReports from "./pages/admin/AdminReports";
+import AdminSettings from "./pages/admin/AdminSettings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +49,7 @@ const App = () => (
             <Route path="add" element={<AddAchievement />} />
             <Route path="edit/:id" element={<EditAchievement />} />
             <Route path="portfolio" element={<Portfolio />} />
+            <Route path="profile" element={<StudentProfile />} />
           </Route>
           
           {/* Faculty Routes */}
@@ -63,6 +68,10 @@ const App = () => (
           <Route path="/admin" element={<DashboardLayout requiredRole="admin" />}>
             <Route index element={<AdminDashboard />} />
             <Route path="analytics" element={<AnalyticsDashboard />} />
+            <Route path="import-students" element={<ImportStudents />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="reports" element={<AdminReports />} />
+            <Route path="settings" element={<AdminSettings />} />
           </Route>
           
           {/* Catch-all route */}

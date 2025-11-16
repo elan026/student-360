@@ -9,58 +9,58 @@
     /* Base colors - Clean academic whites and grays */
     --background: 0 0% 100%; /* Changed from 98% for a brighter feel */
     --foreground: 222 18% 11%;
-    
+
     /* Card system - Clean, elevated surfaces */
     --card: 0 0% 100%;
     --card-foreground: 222 18% 11%;
-    
+
     /* Popover components */
     --popover: 0 0% 100%;
     --popover-foreground: 222 18% 11%;
-    
-    /* Primary - Professional education blue */
-    --primary: 244 100% 18%;
+
+    /* Primary - Navy Blue */
+    --primary: 220 100% 25%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 244 100% 28%;
-    --primary-dark: 244 100% 8%;
-    
-    /* Secondary - Soft accent for supporting elements */
-    --secondary: 43 100% 47%;
+    --primary-light: 220 100% 35%;
+    --primary-dark: 220 100% 15%;
+
+    /* Secondary - Golden Yellow for supporting elements */
+    --secondary: 43 100% 50%;
     --secondary-foreground: 222 18% 11%;
-    
+
     /* Muted tones for subtle elements */
     --muted: 220 10% 96%;
     --muted-foreground: 220 8% 46%;
-    
-    /* Accent - Success green for achievements */
-    --accent: 142 76% 36%;
-    --accent-foreground: 0 0% 100%;
-    
+
+    /* Accent - Yellow for achievements */
+    --accent: 43 100% 50%;
+    --accent-foreground: 222 18% 11%;
+
     /* Achievement category colors */
-    --academic: 244 100% 18%;
-    --cocurricular: 267 84% 58%;
-    --extracurricular: 25 95% 53%;
-    --certification: 142 76% 36%;
-    --internship: 271 81% 56%;
-    --volunteering: 347 77% 50%;
-    --leadership: 45 93% 47%;
-    
+    --academic: 220 100% 25%;
+    --cocurricular: 220 100% 30%;
+    --extracurricular: 43 100% 50%;
+    --certification: 43 95% 45%;
+    --internship: 220 90% 35%;
+    --volunteering: 43 100% 55%;
+    --leadership: 43 100% 48%;
+
     /* Status colors */
-    --success: 142 76% 36%;
+    --success: 43 100% 50%;
     --warning: 38 92% 50%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    
+
     /* Borders and inputs */
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 244 100% 18%;
-    
+    --ring: 220 100% 25%;
+
     /* Gradients for hero sections */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-achievement: linear-gradient(135deg, hsl(var(--accent)), hsl(142 76% 46%));
-    --gradient-hero: linear-gradient(135deg, hsl(244 100% 18%), hsl(267 84% 58%));
-    
+    --gradient-primary: linear-gradient(135deg, hsl(220 100% 25%), hsl(220 100% 35%));
+    --gradient-achievement: linear-gradient(135deg, hsl(43 100% 50%), hsl(43 95% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 100% 25%), hsl(43 100% 50%));
+
     /* Shadows for depth */
     --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -69,63 +69,63 @@
     --radius: 0.75rem; /* Slightly larger radius for a modern look */
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 244 100% 18%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 220 100% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 244 100% 18%;
+    --sidebar-ring: 220 100% 25%;
   }
 
   .dark {
-    /* Dark mode - Professional dark academic theme */
+    /* Dark mode - Navy Blue and Yellow theme */
     --background: 222 25% 8%;
     --foreground: 220 15% 95%;
-    
+
     --card: 222 25% 10%;
     --card-foreground: 220 15% 95%;
-    
+
     --popover: 222 25% 10%;
     --popover-foreground: 220 15% 95%;
-    
-    --primary: 244 100% 28%;
+
+    --primary: 220 100% 35%;
     --primary-foreground: 0 0% 100%;
-    
-    --secondary: 43 100% 37%;
+
+    --secondary: 43 100% 55%;
     --secondary-foreground: 222 18% 11%;
-    
+
     --muted: 222 10% 12%;
     --muted-foreground: 220 8% 60%;
-    
-    --accent: 142 76% 45%;
-    --accent-foreground: 0 0% 100%;
-    
-    --academic: 244 100% 28%;
-    --cocurricular: 267 84% 68%;
-    --extracurricular: 25 95% 63%;
-    --certification: 142 76% 45%;
-    --internship: 271 81% 66%;
-    --volunteering: 347 77% 60%;
-    --leadership: 45 93% 57%;
-    
-    --success: 142 76% 45%;
+
+    --accent: 43 100% 55%;
+    --accent-foreground: 222 18% 11%;
+
+    --academic: 220 100% 35%;
+    --cocurricular: 220 100% 40%;
+    --extracurricular: 43 100% 55%;
+    --certification: 43 95% 50%;
+    --internship: 220 90% 40%;
+    --volunteering: 43 100% 60%;
+    --leadership: 43 100% 53%;
+
+    --success: 43 100% 55%;
     --warning: 38 92% 60%;
     --destructive: 0 84% 65%;
-    
+
     --border: 222 15% 20%;
     --input: 222 15% 20%;
-    --ring: 244 100% 28%;
+    --ring: 220 100% 35%;
 
-    --sidebar-background: 222 25% 8%;
-    --sidebar-foreground: 220 15% 95%;
-    --sidebar-primary: 244 100% 28%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 220 100% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 15% 15%;
-    --sidebar-accent-foreground: 220 15% 85%;
-    --sidebar-border: 222 15% 20%;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(244 100% 28%), hsl(267 84% 68%));
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 220 13% 91%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(220 100% 35%), hsl(43 100% 55%));
   }
 }
 
