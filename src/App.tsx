@@ -12,6 +12,7 @@ import AchievementsList from "./pages/student/AchievementsList";
 import AddAchievement from "./pages/student/AddAchievement";
 import EditAchievement from "./pages/student/EditAchievement";
 import Portfolio from "./pages/student/Portfolio";
+import StudentProfile from "./pages/student/StudentProfile";
 import FacultyDashboard from "./pages/faculty/FacultyDashboard";
 import FacultyAnalyticsDashboard from "./pages/faculty/AnalyticsDashboard";
 import { VerificationQueue } from "./pages/faculty/VerificationQueue";
