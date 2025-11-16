@@ -73,31 +73,54 @@ const ManageStudents = () => {
         <div className="relative w-full sm:w-1/3 mb-4">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search by student name..."
+            placeholder="Search by name or email..."
             className="pl-8"
-            onChange={e => setSearchTerm(e.target.value)}
+            value={searchTerm}
+            onChange={e => handleSearch(e.target.value)}
           />
         </div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Total Achievements</TableHead>
-              <TableHead>Verified Achievements</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredStudents.map(student => (
-              <TableRow key={student.id}>
-                <TableCell>{student.name}</TableCell>
-                <TableCell>{student.email}</TableCell>
-                <TableCell>{student.totalAchievements}</TableCell>
-                <TableCell>{student.verifiedAchievements}</TableCell>
+
+        {error && (
+          <div className="mb-4 p-4 bg-destructive/10 text-destructive rounded-md">
+            {error}
+          </div>
+        )}
+
+        {loading ? (
+          <div className="flex items-center justify-center h-40">
+            <Loader2 className="h-6 w-6 animate-spin text-primary" />
+            <span className="ml-2">Loading students...</span>
+          </div>
+        ) : (
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
+                <TableHead>Total Achievements</TableHead>
+                <TableHead>Verified Achievements</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {filteredStudents.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center text-muted-foreground py-4">
+                    No students found
+                  </TableCell>
+                </TableRow>
+              ) : (
+                filteredStudents.map(student => (
+                  <TableRow key={student.id}>
+                    <TableCell>{student.name}</TableCell>
+                    <TableCell>{student.email}</TableCell>
+                    <TableCell>{student.totalAchievements}</TableCell>
+                    <TableCell>{student.verifiedAchievements}</TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        )}
       </CardContent>
     </Card>
   );
