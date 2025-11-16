@@ -69,11 +69,11 @@
     --radius: 0.75rem; /* Slightly larger radius for a modern look */
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-foreground: 0 0% 0%;
     --sidebar-primary: 220 100% 25%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 220 100% 25%;
   }
@@ -118,11 +118,11 @@
     --ring: 220 100% 35%;
 
     --sidebar-background: 222 25% 8%;
-    --sidebar-foreground: 220 15% 95%;
+    --sidebar-foreground: 0 0% 0%;
     --sidebar-primary: 220 100% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 222 15% 15%;
-    --sidebar-accent-foreground: 220 15% 85%;
+    --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 222 15% 20%;
 
     --gradient-hero: linear-gradient(135deg, hsl(220 100% 35%), hsl(43 100% 55%));
