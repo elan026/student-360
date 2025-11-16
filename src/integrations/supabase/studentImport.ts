@@ -1,4 +1,5 @@
 import { supabase } from "./client";
+import { v4 as uuidv4 } from 'uuid';
 
 export interface StudentCSVRow {
   student_id: string;
@@ -10,6 +11,13 @@ export interface StudentCSVRow {
   email: string;
   phone: string;
 }
+
+/**
+ * Generate a UUID v4 string
+ */
+const generateUUID = (): string => {
+  return uuidv4();
+};
 
 export interface StudentProfile {
   id: string;
